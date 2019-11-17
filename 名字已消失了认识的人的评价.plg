@@ -1,0 +1,50 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: 名字已消失了认识的人的评价 - Win32 Debug--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating command line "rc.exe /l 0x804 /fo"Debug/名字已消失了认识的人的评价.res" /d "_DEBUG" "C:\Users\mzyxsl\Desktop\源码\名字已消失了认识的人的评价\名字已消失了认识的人的评价.rc"" 
+Creating temporary file "C:\Users\mzyxsl\AppData\Local\Temp\RSPEE3F.tmp" with contents
+[
+/nologo /MTd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_MBCS" /Fp"Debug/名字已消失了认识的人的评价.pch" /Yu"stdafx.h" /Fo"Debug/" /Fd"Debug/" /FD /GZ /c 
+"C:\Users\mzyxsl\Desktop\源码\名字已消失了认识的人的评价\名字已消失了认识的人的评价.cpp"
+"C:\Users\mzyxsl\Desktop\源码\名字已消失了认识的人的评价\名字已消失了认识的人的评价Dlg.cpp"
+]
+Creating command line "cl.exe @C:\Users\mzyxsl\AppData\Local\Temp\RSPEE3F.tmp" 
+Creating temporary file "C:\Users\mzyxsl\AppData\Local\Temp\RSPEE40.tmp" with contents
+[
+/nologo /MTd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_MBCS" /Fp"Debug/名字已消失了认识的人的评价.pch" /Yc"stdafx.h" /Fo"Debug/" /Fd"Debug/" /FD /GZ /c 
+"C:\Users\mzyxsl\Desktop\源码\名字已消失了认识的人的评价\StdAfx.cpp"
+]
+Creating command line "cl.exe @C:\Users\mzyxsl\AppData\Local\Temp\RSPEE40.tmp" 
+Creating temporary file "C:\Users\mzyxsl\AppData\Local\Temp\RSPEE41.tmp" with contents
+[
+/nologo /subsystem:windows /incremental:yes /pdb:"Debug/名字已消失了认识的人的评价.pdb" /debug /machine:I386 /out:"Debug/名字已消失了认识的人的评价.exe" /pdbtype:sept 
+".\Debug\StdAfx.obj"
+".\Debug\名字已消失了认识的人的评价.obj"
+".\Debug\名字已消失了认识的人的评价Dlg.obj"
+".\Debug\名字已消失了认识的人的评价.res"
+]
+Creating command line "link.exe @C:\Users\mzyxsl\AppData\Local\Temp\RSPEE41.tmp"
+<h3>Output Window</h3>
+Compiling resources...
+Compiling...
+Skipping... (no relevant changes detected)
+StdAfx.cpp
+Compiling...
+Skipping... (no relevant changes detected)
+名字已消失了认识的人的评价.cpp
+名字已消失了认识的人的评价Dlg.cpp
+Linking...
+LINK : LNK6006: program database C:\Users\mzyxsl\Desktop\源码\名字已消失了认识的人的评价\Debug\名字已消失了认识的人的评价.pdb missing; performing full link
+
+
+
+<h3>Results</h3>
+名字已消失了认识的人的评价.exe - 0 error(s), 0 warning(s)
+</pre>
+</body>
+</html>
