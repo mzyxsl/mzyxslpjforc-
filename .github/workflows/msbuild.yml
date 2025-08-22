@@ -26,5 +26,5 @@ jobs:
  
     - name: Build MFC Application
       run: |
-        msbuild 名字已消失了认识的人的评价.sln /p:Configuration=Debug /p:Platform="Any CPU"
+        msbuild 名字已消失了认识的人的评价.sln /p:Configuration=Debug /p:Platform="x86"
       shell: cmd
