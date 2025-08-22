@@ -24,19 +24,18 @@ jobs:
     - name: Add MSBuild to PATH
       uses: microsoft/setup-msbuild@v2
 
-    - name: Install MFC components
+    - name: Install Chocolatey
+      shell: pwsh
       run: |
-        # 使用 Visual Studio Installer 安装 MFC 组件
-        $installerPath = "${env:ProgramFiles(x86)}\Microsoft Visual Studio\Installer\vs_installer.exe"
-        $installPath = & "${env:ProgramFiles(x86)}\Microsoft Visual Studio\Installer\vswhere.exe" -latest -property installationPath
-        
-        # 安装 MFC 组件
-        & "$installerPath" --modify --installPath "$installPath" `
-          --add Microsoft.VisualStudio.Component.VC.ATLMFC `
-          --add Microsoft.VisualStudio.Component.VC.MFC.ARM64 `
-          --add Microsoft.VisualStudio.Component.VC.MFC.ARM `
-          --add Microsoft.VisualStudio.Component.VC.MFC.x86.x64 `
-          --quiet --norestart --wait
+        Set-ExecutionPolicy Bypass -Scope Process -Force
+        [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072
+        iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))
+
+    - name: Install Visual Studio Build Tools with MFC
+      shell: pwsh
+      run: |
+        choco install visualstudio2022buildtools -y
+        choco install visualstudio2022-workload-vctools -y
  
     - name: Build MFC Application
       run: |
