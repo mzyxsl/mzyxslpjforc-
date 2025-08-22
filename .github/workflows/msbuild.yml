@@ -32,6 +32,8 @@ jobs:
 
     - name: Add MSBuild to PATH
       uses: microsoft/setup-msbuild@v2
+      with:
+        vs-version: '[12.0,12.9)'
  
     - name: Build MFC Application
       run: |
