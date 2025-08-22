@@ -1,0 +1,55 @@
+# This workflow uses actions that are not certified by GitHub.
+# They are provided by a third-party and are governed by
+# separate terms of service, privacy policy, and support
+# documentation.
+
+name: MSBuild
+
+on:
+  push:
+    branches: [ "master" ]
+  pull_request:
+    branches: [ "master" ]
+
+env:
+  # Path to the solution file relative to the root of the project.
+  SOLUTION_FILE_PATH: .
+
+  # Configuration type to build.
+  # You can convert this to a build matrix if you need coverage of multiple configuration types.
+  # https://docs.github.com/actions/learn-github-actions/managing-complex-workflows#using-a-build-matrix
+  BUILD_CONFIGURATION: Release
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Add MSBuild to PATH
+      uses: microsoft/setup-msbuild@v1.0.2
+
+    - name: Setup Visual Studio Shell
+      run: |
+        choco install -y visualstudio2019buildtools --package-parameters "--add Microsoft.VisualStudio.Component.VC.Tools.x86.x64"
+        choco install -y visualstudio2019-workload-vctools
+        choco install -y visualstudio2019-workload-nativedesktop
+        choco install -y visualstudio2019-workload-msbuildtools
+        choco install -y visualstudio2019-workload-netcoretools
+        choco install -y visualstudio2019-workload-manageddesktop
+        choco install -y visualstudio2019-workload-nativedesktop
+        choco install -y visualstudio2019-workload-vctools
+        choco install -y visualstudio2019-workload-vc-coreide
+        choco install -y visualstudio2019-workload-vc-coreideextensionstools
+        choco install -y visualstudio2019-workload-vc-coreideextensionstoolsforvs2019
+      shell: cmd
+ 
+    - name: Build MFC Application
+      run: |
+        cd ${{ github.workspace }}
+        msbuild 名字已消失了认识的人的评价.sln /p:Configuration=Release /p:Platform="Win32"
+      shell: cmd
