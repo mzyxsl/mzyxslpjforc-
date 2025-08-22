@@ -23,6 +23,20 @@ jobs:
 
     - name: Add MSBuild to PATH
       uses: microsoft/setup-msbuild@v2
+
+    - name: Install MFC components
+      run: |
+        # 使用 Visual Studio Installer 安装 MFC 组件
+        $installerPath = "${env:ProgramFiles(x86)}\Microsoft Visual Studio\Installer\vs_installer.exe"
+        $installPath = & "${env:ProgramFiles(x86)}\Microsoft Visual Studio\Installer\vswhere.exe" -latest -property installationPath
+        
+        # 安装 MFC 组件
+        & "$installerPath" --modify --installPath "$installPath" `
+          --add Microsoft.VisualStudio.Component.VC.ATLMFC `
+          --add Microsoft.VisualStudio.Component.VC.MFC.ARM64 `
+          --add Microsoft.VisualStudio.Component.VC.MFC.ARM `
+          --add Microsoft.VisualStudio.Component.VC.MFC.x86.x64 `
+          --quiet --norestart --wait
  
     - name: Build MFC Application
       run: |
