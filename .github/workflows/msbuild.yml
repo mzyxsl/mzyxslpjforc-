@@ -31,25 +31,9 @@ jobs:
     - uses: actions/checkout@v4
 
     - name: Add MSBuild to PATH
-      uses: microsoft/setup-msbuild@v1.0.2
-
-    - name: Setup Visual Studio Shell
-      run: |
-        choco install -y visualstudio2019buildtools --package-parameters "--add Microsoft.VisualStudio.Component.VC.Tools.x86.x64"
-        choco install -y visualstudio2019-workload-vctools
-        choco install -y visualstudio2019-workload-nativedesktop
-        choco install -y visualstudio2019-workload-msbuildtools
-        choco install -y visualstudio2019-workload-netcoretools
-        choco install -y visualstudio2019-workload-manageddesktop
-        choco install -y visualstudio2019-workload-nativedesktop
-        choco install -y visualstudio2019-workload-vctools
-        choco install -y visualstudio2019-workload-vc-coreide
-        choco install -y visualstudio2019-workload-vc-coreideextensionstools
-        choco install -y visualstudio2019-workload-vc-coreideextensionstoolsforvs2019
-      shell: cmd
+      uses: microsoft/setup-msbuild@v2
  
     - name: Build MFC Application
       run: |
-        cd ${{ github.workspace }}
         msbuild 名字已消失了认识的人的评价.sln /p:Configuration=Release /p:Platform="Win32"
       shell: cmd
